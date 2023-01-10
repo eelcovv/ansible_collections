@@ -1,0 +1,21 @@
+all:
+  vars:
+    ansible_connection: lxd
+    ansible_user: root
+    ansible_become: no
+    user: "{{ vault_user }}"
+    password: "{{ vault_password }}"  # if user doesn't exist, user will be created with specified password. Otherwise, password will not be updated
+    home: "/home/{{ user }}"
+    email: "{{ vault_email }}"
+    nickname: "{{ vault_nickname }}"
+    git_email: "{{ email }}"
+    git_name: "{{ nickname }}"
+  children:
+      local:
+        vars:
+          ansible_lxd_remote: local
+        hosts: 
+          webservers:
+            - oracleweb
+          desktops:
+            - oracleweb
