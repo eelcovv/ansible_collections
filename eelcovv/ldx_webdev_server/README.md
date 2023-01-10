@@ -1,3 +1,3 @@
 # Ansible Collection - eelcovv.ldx_webdev_server
 
-roles and modules to setup a webserver and desktop on a ldx cluster
+roles and modules to set up a webserver and desktop on a ldx cluster
