@@ -1,0 +1,50 @@
+---
+# tasks file for common
+- name: Install software
+  become: True
+  become_user: root
+  apt:
+    update-cache: yes
+    name: "{{ common_packages }}"
+- name: "Maak user {{ user }}"
+  ansible.builtin.user:
+    name: "{{ user }}"
+    comment: "{{ user_full_name }}"
+    shell: /bin/bash
+    uid: 1040
+    groups: adm,sudo
+    password: "{{ user_password }}"
+- name: Geef users ssh permissie om in te loggen
+  copy: 
+    dest: /etc/ssh/sshd_config.d/99-cloudimg-settings.conf
+    content: |
+      PasswordAuthentication yes
+- name: Set vi editing mode
+  copy: 
+    dest: "{{ home }}/.inputrc" 
+    content: |
+      set editing-mode vi
+- name: Remove org.freedesktop.color.polify file
+  file:
+    path: /usr/share/polkit-1/actions/org.freedesktop.color.policy
+    state: absent
+- name: Install base mamba
+  vars:
+    arch: "{{ mamba_arch }}"
+    root_prefix: "{{ mamba_root_prefix }}"
+    root_prefix_condarc: "{{ mamba_root_prefix_condarc }}"
+    packages: "{{ mamba_packages }}"
+  ansible.builtin.import_role:
+    name: mambaorg.micromamba
+- name: Change owner Mamba 
+  file: 
+    path: "{{ mamba_root_prefix }}"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    recurse: True
+- name: Run Mamba init
+  shell: "{{ mamba_root_prefix }}/bin/mamba init --system"
+  args:
+    creates: /etc/profile.d/conda.sh
+
+
