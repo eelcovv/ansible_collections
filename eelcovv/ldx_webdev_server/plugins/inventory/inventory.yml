@@ -25,8 +25,9 @@ all:
       local:
         vars:
           ansible_lxd_remote: local
-        hosts: 
-          webservers:
-            - oracleweb
-          desktops:
-            - oracledsk
+      webservers:
+        hosts:
+          oracleweb:
+      desktops:
+        hosts:
+          oracledsk:
