@@ -1,10 +1,21 @@
+# The vault variables are stored in the encrypted all.yml file. To replace with you own, create
+# the group_vars/all.yml file with the following lines:
+#
+# --- file group_vars/all.yml
+# vault_user: <your username>
+# vault_password: <your password>
+# vault_email: <your email>
+# vault_nickname: <your gitname>
+#
+# encrypt this file with the command: ansible-vault encrypt all.yml
+
 all:
   vars:
     ansible_connection: lxd
     ansible_user: root
     ansible_become: no
     user: "{{ vault_user }}"
-    password: "{{ vault_password }}"  # if user doesn't exist, user will be created with specified password. Otherwise, password will not be updated
+    password: "{{ vault_password }}"
     home: "/home/{{ user }}"
     email: "{{ vault_email }}"
     nickname: "{{ vault_nickname }}"
@@ -18,4 +29,4 @@ all:
           webservers:
             - oracleweb
           desktops:
-            - oracleweb
+            - oracledsk
