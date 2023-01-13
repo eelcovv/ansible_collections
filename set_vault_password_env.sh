@@ -11,7 +11,7 @@
 # Copy the file vault-env.sh to your directory ~/.ansible in order to
 # work together with ansible-vault
 
-export ANSIBLE_VAULT_PASSWORD_FILE="$HOME/.ansible/vault-env"
+export ANSIBLE_VAULT_PASSWORD_FILE="$(realpath .)/vault-env"
 export no_proxy='*'
 
 read -sp "Vault password:" ANSIBLE_VAULT_PASSWORD
