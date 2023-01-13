@@ -20,7 +20,7 @@ common_packages:
   - ufw
   - trash-cli
   - environment-modules
-  - dir-env
+  - direnv
 
 mamba_arch: linux-aarch64
 mamba_root_prefix: /opt/conda
