@@ -7,7 +7,17 @@
         name: system
     - import_role:
         name: mamba
-    - import_role:
-        name: ubuntu-webserver
+- hosts: oracledsk
+  gather_facts: true
+  collections:
+    - eelcovv.ldx_webdev_server
+  tasks:
     - import_role:
         name: ubuntu-desktop
+- hosts: oracleweb
+  gather_facts: true
+  collections:
+    - eelcovv.ldx_webdev_server
+  tasks:
+    - import_role:
+        name: ubuntu-webserver

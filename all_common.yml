@@ -1,0 +1,9 @@
+- hosts: all
+  gather_facts: true
+  collections:
+    - eelcovv.ldx_webdev_server
+  tasks:
+    - import_role:
+        name: system
+    - import_role:
+        name: mamba

@@ -1,0 +1,7 @@
+---
+# vars file for common
+user: eelco
+user_full_name: Eelco van Vliet
+# use 'mkpasswd --method=sha-512' (apt install whois ) to encrypt the password
+user_password: $6$AvVnPRYmnhZcgCUb$/t0Hgeg3d3MpUIc4g6r4iAXyWE/bCRwJ8dtZa/wVPtnisGdNjEboIQbb0mwNj4wKzdcdidTmx8QOr.QilxRCN1
+home: "/home/{{ user }}" 
