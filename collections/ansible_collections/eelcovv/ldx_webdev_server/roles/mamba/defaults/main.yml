@@ -14,3 +14,4 @@ mamba_desktop_packages:
   - pandas
   - matplotlibs
   - seaborn
+  - django

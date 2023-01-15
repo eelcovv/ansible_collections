@@ -21,4 +21,6 @@ common_packages:
   - trash-cli
   - environment-modules
   - direnv
+  - tree
+  - trash-cli
 
