@@ -1,4 +1,4 @@
-- hosts: oracledsk
+- hosts: desktops
   gather_facts: true
   collections:
     - eelcovv.ldx_webdev_server

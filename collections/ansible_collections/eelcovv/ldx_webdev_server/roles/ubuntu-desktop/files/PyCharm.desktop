@@ -1,6 +1,6 @@
 [Desktop Entry]
-Icon=/opt/pycharm/pycharm-2022.3.1/bin/pycharm.svg
+Icon=/opt/pycharm-2022.3.1/bin/pycharm.svg
 Type=Application
-Exec=/opt/pycharm/pycharm-2022.3.1/bin/pycharm.sh
+Exec=/opt/pycharm-2022.3.1/bin/pycharm.sh
 Path=/home/eelco/PyCharmProjects
 GenericName=Pycharm IDE

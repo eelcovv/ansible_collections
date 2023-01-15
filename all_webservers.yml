@@ -1,4 +1,4 @@
-- hosts: oracleweb
+- hosts: webservers
   gather_facts: true
   collections:
     - eelcovv.ldx_webdev_server
