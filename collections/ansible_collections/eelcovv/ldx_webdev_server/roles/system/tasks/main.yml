@@ -14,7 +14,7 @@
     uid: 1040
     groups: adm,sudo
     password: "{{ user_password }}"
-- name: Geef users ssh permissie om in te loggen
+- name: Give users ssh permission to log in
   copy: 
     dest: /etc/ssh/sshd_config.d/99-cloudimg-settings.conf
     content: |
@@ -24,9 +24,7 @@
     dest: "{{ home }}/.inputrc" 
     content: |
       set editing-mode vi
-- name: Remove org.freedesktop.color.polify file
+- name: Remove org.freedesktop.color.policy file
   file:
     path: /usr/share/polkit-1/actions/org.freedesktop.color.policy
     state: absent
-
-

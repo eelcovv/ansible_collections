@@ -18,9 +18,3 @@
   shell: "{{ mamba_root_prefix }}/bin/mamba init --system"
   args:
     creates: /etc/profile.d/conda.sh
-- name: Install some packages in the desktop base environment
-  conda:
-    name:
-      - pandas
-    environment: base
-    executable: "{{ mamba_prefix }}/bin/mamba"
