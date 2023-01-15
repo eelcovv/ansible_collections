@@ -21,6 +21,8 @@ all:
     nickname: "{{ vault_nickname }}"
     git_email: "{{ email }}"
     git_name: "{{ nickname }}"
+  roles:
+    - role: evandam.conda
   children:
       local:
         vars:

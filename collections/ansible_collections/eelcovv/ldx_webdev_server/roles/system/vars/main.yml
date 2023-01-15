@@ -22,17 +22,3 @@ common_packages:
   - environment-modules
   - direnv
 
-mamba_arch: linux-aarch64
-mamba_root_prefix: /opt/conda
-mamba_root_prefix_condarc:
-  channels:
-    - conda-forge
-mamba_packages:
-  - mamba
-  - python=3.9
-  - pip
-  - pandas
-  - numpy
-  - matplotlib
-  - seaborn
-  - ipython

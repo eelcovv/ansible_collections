@@ -1,0 +1,16 @@
+---
+# defaults file for mamba
+mamba_arch: linux-aarch64
+mamba_root_prefix: /opt/conda
+mamba_root_prefix_condarc:
+  channels:
+    - conda-forge
+mamba_base_packages:
+  - mamba
+  - python=3.9
+  - pip
+  - ipython
+mamba_desktop_packages:
+  - pandas
+  - matplotlibs
+  - seaborn
