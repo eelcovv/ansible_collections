@@ -7,3 +7,7 @@
         name: system
     - import_role:
         name: mamba
+    - import_role:
+        name: ubuntu-webserver
+    - import_role:
+        name: ubuntu-desktop
