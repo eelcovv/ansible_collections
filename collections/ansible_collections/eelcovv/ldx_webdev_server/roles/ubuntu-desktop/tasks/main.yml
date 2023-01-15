@@ -16,7 +16,7 @@
     name: oefenweb.pycharm
 - name: Copy Pycharm Desktop icon
   file:
-    path: "{{ role_path }}/files/PyCharm.desktop"
+    src: "{{ role_path }}/files/PyCharm.desktop"
     dest: "{{ home }}/Desktop/PyCharm.desktop"
     mode: "0775"
     owner: "{{ user }}"
