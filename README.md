@@ -1,6 +1,8 @@
 # README #
 
-Dit document bevat de instructie en settings file om een [LXD](https://linuxcontainers.org/) virtuele machine met behulp van [Ansible](https://docs.ansible.com) op te zetten 
+Dit document bevat de instructie en settings file om een [LXD](https://linuxcontainers.org/) virtuele machine met 
+behulp van [Ansible](https://docs.ansible.com) op te zetten. Het richt zich specifiek op het inrichten van van
+[Oracle Free tier](https://www.oracle.com/cloud/free/)
 
 ### Stappen om een machine op te zetten ###
 
@@ -21,78 +23,70 @@ pip install argcomplete
 
 ##### Voorbereiding lxd
 
-Om lxd voor de eerste keer te configuren kan je het volgende commando runnen:
+Om lxd voor de eerste keer te configureren kan je het volgende commando runnen:
 
 ~~~
 lxd init
 ~~~
 
-###### Firewall instellen
 
-Kies overeal de default waarde. 
+##### Creëer twee nieuwe Linux ubuntu machines 
 
-Check of je een firewal op je server hebt draaien met het commando:
-
-~~~
-nft list ruleset
-~~~
-
-of 
-
-~~~
-ufw status
-~~~
-
-Als je al een firewall hebt, kan je de firewall van lxd uitzetten door te doen:
-
-~~~
-lxc network set lxdbr0 ipv4.firewall false
-lxc network set lxdbr0 ipv6.firewall false
-~~~
-
-Vervolgens moet je de bridge nog aan de firewall regels toevoegen met 
-
-~~~
-firewall-cmd --zone=trusted --change-interface=lxdbr0 --permanent
-firewall-cmd --reload
-~~~
-
-Als het commando *firewall-cmd* niet herkend wordt kan je het zo installeren:
-
-
-~~~
-apt install firewalld
-~~~
-
-
-##### Creëer een nieuwe Linux mint machine met de naam *mintdesk*
+Creeer eerst een ubuntu machine naam *ununtudsk*  en  *ununtuweb* 
 
 
 ~~~
 lxc launch images:ubuntu/22.10 oracledsk
+lxc launch images:ubuntu/22.10 oracleweb
 ~~~
+
+Daar
 
 Als je protectie op je image wilt toevoegen doe je:
 
 ~~~
 lxc config set oracledsk security.protection.delete true
+lxc config set oracleweb security.protection.delete true
 ~~~
 
+Hiermee voorkom je dat je een aangemaakte image per ongeluk delete met het command *lxc delete oraclesdsk*. Je
+moet om een image te deleten eerst de flag weer op false zetten. 
 
 We installeren ubuntu ipv mint omdat ubuntu makkelijker met xrdp kan connecten. Met mint is me dit niet gelukt
 
-Het resultaat zou er zo uit moeten zien: 
+Vraag een lijst van je machine op met 
+
 
 ~~~
-+-------------+---------+--------------------+-----------------------------------------------+-----------+-----------+
-|    NAME     |  STATE  |        IPV4        |                     IPV6                      |   TYPE    | SNAPSHOTS |
-+-------------+---------+--------------------+-----------------------------------------------+-----------+-----------+
-| oracledsk | RUNNING | 10.25.39.45 (eth0) | fd42:3c03:b1bf:e3f2:216:3eff:fe14:e265 (eth0) | CONTAINER | 0         |
-+-------------+---------+--------------------+-----------------------------------------------+-----------+-----------+
+sudo lxc ls
 ~~~
 
+Het resultaat zou er zo uit moeten zien:
+
+~~~
++-----------+---------+---------------------+-----------------------------------------------+-----------+-----------+
+|   NAME    |  STATE  |        IPV4         |                     IPV6                      |   TYPE    | SNAPSHOTS |
++-----------+---------+---------------------+-----------------------------------------------+-----------+-----------+
+| oracledsk | RUNNING | 10.25.39.181 (eth0) | fd42:3c03:b1bf:e3f2:216:3eff:fefa:eb48 (eth0) | CONTAINER | 0         |
++-----------+---------+---------------------+-----------------------------------------------+-----------+-----------+
+| oracleweb | RUNNING | 10.25.39.177 (eth0) | fd42:3c03:b1bf:e3f2:216:3eff:fea9:9c83 (eth0) | CONTAINER | 0         |
++-----------+---------+---------------------+-----------------------------------------------+-----------+-----------+
+~~~
+
+Je kan al testen of je kunt inloggen door te doen:
+
+```
+lxc shell oracledsk
+
+```
+
+Je gebruikt het lxc shell commando om in te loggen. Ssh is nog niet nodig en dat kan ook niet omdat we dat nog niet
+op de clients geinstalleerd hebben.  Dat doen we zo met ansible.
 
 ##### Installeer de plug-in om je nieuwe machine van buitenaf op te zetten
+
+We gaan nu ansible gebruiken om software op de machines te installeren. We beginnen met het toevoegen van wat 
+functionaliteit. Doe:
 
 ~~~
 ansible-galaxy collection install community.general -f
@@ -287,3 +281,40 @@ iptables-save
 nft list table inet lxd
 
 
+###### Firewall instellen
+
+Als je problemen met je firewall hebt, dan zou het kunnen dat de lxd firewall interfereert met de firewall van lxd.
+De oplossing is dan om de lxd firewall uit te zetten. Dat wordt hier uitgelegd.
+
+
+Check eerst of je een firewall op je server hebt draaien met het commando:
+
+~~~
+nft list ruleset
+~~~
+
+of
+
+~~~
+ufw status
+~~~
+
+Als je al een firewall hebt, kan je de firewall van lxd uitzetten door te doen:
+
+~~~
+lxc network set lxdbr0 ipv4.firewall false
+lxc network set lxdbr0 ipv6.firewall false
+~~~
+
+Vervolgens moet je de bridge nog aan de firewall regels toevoegen met
+
+~~~
+firewall-cmd --zone=trusted --change-interface=lxdbr0 --permanent
+firewall-cmd --reload
+~~~
+
+Als het commando *firewall-cmd* niet herkend wordt kan je het zo installeren:
+
+~~~
+apt install firewalld
+~~~
