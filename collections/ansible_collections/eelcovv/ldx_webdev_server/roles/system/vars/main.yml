@@ -22,5 +22,5 @@ common_packages:
   - environment-modules
   - direnv
   - tree
-  - trash-cli
+  - imagemagick
 
