@@ -15,3 +15,14 @@ desktop_packages:
   - glmark2
   - pulsemixer
   - pulseaudio-utils
+  - texlive
+  - texlive
+  - texlive-extra-utils
+  - texlive-lang-european
+  - texlive-xetex
+  - texlive-science
+  - texlive-luatex
+  - latexmk
+  - evince
+
+
