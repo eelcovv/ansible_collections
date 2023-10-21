@@ -23,4 +23,7 @@ common_packages:
   - direnv
   - tree
   - imagemagick
+  - xsel
+  - xclip
+  - nala
 

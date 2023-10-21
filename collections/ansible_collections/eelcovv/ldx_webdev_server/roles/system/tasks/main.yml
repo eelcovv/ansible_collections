@@ -24,6 +24,11 @@
     dest: "{{ home }}/.inputrc" 
     content: |
       set editing-mode vi
+- name: Chown of /opt map
+  file:
+    path: /opt
+    owner: "{{ user }}"
+    recurse: true
 - name: Remove org.freedesktop.color.policy file
   file:
     path: /usr/share/polkit-1/actions/org.freedesktop.color.policy
