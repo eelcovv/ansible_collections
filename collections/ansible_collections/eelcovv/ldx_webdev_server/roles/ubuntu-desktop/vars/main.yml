@@ -26,8 +26,12 @@ desktop_packages:
   - texlive-pstricks
   - texlive-metapost
   - texlive-fonts-recommended
+  - texlive-fonts-extra
   - texlive-formats-extra
   - latexmk
   - evince
+  - alsa-utils
+  - sqlitebrowser
+  - thorium-browser
 
 
