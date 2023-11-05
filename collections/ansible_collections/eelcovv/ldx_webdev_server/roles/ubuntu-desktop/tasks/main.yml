@@ -1,11 +1,11 @@
 ---
 # tasks file for ubuntu-desktop
-- name: Copy Thorium deb fil 
-  become: True
-  become_user: root
-  copy:
-    src: "{{ role_path }}/files/thorium.list"
-    dest: "/etc/apt/sources.list.d/"
+#- name: Copy Thorium deb fil 
+#  become: True
+#  become_user: root
+#  copy:
+#    src: "{{ role_path }}/files/thorium.list"
+#    dest: "/etc/apt/sources.list.d/"
 - name: Install software for desktop
   become: True
   become_user: root

@@ -32,6 +32,6 @@ desktop_packages:
   - evince
   - alsa-utils
   - sqlitebrowser
-  - thorium-browser
+# - thorium-browser
 
 

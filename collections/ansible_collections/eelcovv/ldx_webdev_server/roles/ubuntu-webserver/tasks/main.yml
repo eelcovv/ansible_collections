@@ -1,2 +1,54 @@
 ---
 # tasks file for ubuntu-webserver
+- name: Copy hosts to /etc
+  become: True
+  become_user: root
+  copy:
+    src: "{{ role_path }}/files/hosts"
+    dest: "/etc"
+- name: Copy sshd_config to /etc/ssh
+  become: True
+  become_user: root
+  copy:
+    src: "{{ role_path }}/files/sshd_config"
+    dest: "/etc/ssh"
+- name: Set UFW logging
+  community.general.ufw:
+    logging:  on
+- name: Limit UFW ssh
+  community.general.ufw:
+    rule: limit
+    port: ssh
+    proto: tcp
+- name: Allow UFW open-ssh
+  community.general.ufw:
+    rule: allow
+    name: OpenSSH
+- name: UFW Outgoing allow
+  community.general.ufw:
+    state: enabled
+    direction: outgoing
+    policy: allow
+- name: UFW incoming deny
+  community.general.ufw:
+    state: enabled
+    direction: incoming
+    policy: deny
+- name: UFW allow port 8000
+  community.general.ufw:
+    rule: allow
+    port: '8000'
+    proto: tcp
+- name: Enable UFW
+  community.general.ufw:
+    state: enabled
+
+
+
+
+
+
+
+
+
+

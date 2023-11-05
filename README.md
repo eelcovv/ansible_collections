@@ -174,8 +174,6 @@ functionaliteit. Doe:
 ansible-galaxy collection install community.general -f
 ~~~
 
-##### Installeer de plug-in om je nieuwe machine van buitenaf op te zetten
-
 ##### Installeer de utility *mkpasswd* met behulp van *apt install whois* en run dan
 
 
