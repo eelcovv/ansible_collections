@@ -100,8 +100,8 @@ Gebruik de naam van je brug (*lxbr0*) om je netwerk door te verbinden
 
 ```
 lxc network list
-lxc network forward create lxdbr0 <interne ip address>
-lxc network forward port add lxdbr0 <interne_ip_address> tcp 2022  <ip van image> 22
+lxc network forward create lxdbr0 <publieke ip address>
+lxc network forward port add lxdbr0 <publieke ip address> tcp 2022  <ip van image> 22
 ```
 
 De naam *lxdbr0* verwijst naar de naam van de bridge naar je client. Het IP adres is het adres van je Ubuntu host. 
@@ -111,9 +111,9 @@ Via de ssh port *2022* wordt deze naar je locale ip van de image  geforward.
 Concreet heb ik voor de oracle data base de volgende poorten aangemaakt
 
 ```
-lxc network forward port add lxdbr0  10.0.0.143 tcp 2023 10.25.39.177  22
-lxc network forward port add lxdbr0  10.0.0.143 tcp 2023 10.25.39.181  22
-lxc network forward port add lxdbr0  10.0.0.143 tcp 2080 10.25.39.181  3389
+lxc network forward port add lxdbr0  194.146.13.222 tcp 2022 10.25.39.177  22
+lxc network forward port add lxdbr0  194.146.13.222 tcp 2023 10.25.39.181  22
+lxc network forward port add lxdbr0  194.146.13.222 tcp 2080 10.25.39.181  3389
 ```
 
 De laatste is nodig om vanuit windows met rdp te connecten. De eerste twee gebruik je met Reminni vanuit linux. Je tunnelt dan via de ssh poort 22
@@ -129,7 +129,7 @@ ip ad
 Concreet doe je dus:
 
 ```
-lxc network forward create lxdbr0 10.0.0.143
+lxc network forward create lxdbr0 194.146.13.222
 ```
 
 met 10.0.0.143 het interne ip address van oracle dat je met *ip ad* vindt.
