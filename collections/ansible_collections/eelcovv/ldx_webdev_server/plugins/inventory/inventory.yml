@@ -29,7 +29,7 @@ all:
           ansible_lxd_remote: local
       webservers:
         hosts:
-          oracleweb:
+          contaboweb:
       desktops:
         hosts:
-          oracledsk:
+          contabodsk:

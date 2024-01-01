@@ -20,6 +20,11 @@
 - name: Install pycharm with snap
   ansible.builtin.import_role:
     name: oefenweb.pycharm
+- name: Create Desktop directory
+  ansible.builtin.file:
+    path: "{{ home }}/Desktop"
+    state: directory
+    mode: '0755'
 - name: Copy Pycharm Desktop icon
   copy:
     src: "{{ role_path }}/files/PyCharm.desktop"

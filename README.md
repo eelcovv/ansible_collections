@@ -232,6 +232,14 @@ ansible-galaxy install mambaorg.micromamba
 
 ```
 
+##### Instellen van Pycharm 
+```
+ansible-galaxy install oefenweb.pycharm
+```
+
+
+
+
 ##### Wat handige lxc commando's 
 
 Lijst van alle containers:
