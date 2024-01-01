@@ -264,7 +264,7 @@ Om 1 port de deleten doe je
 sudo lxc network forward port remove lxdbr0 10.0.0.143 tcp 2080
 ```
 
-##### RDP verbinding met remina maken
+##### RDP verbinding met Remmina maken
 
 Vul bij Basic in voor de server 'localhost' in en bij het tabblad *SSH tunnel* voor *Custom* het ip address + port van je ssh *144.91.125.45:2022*
 
