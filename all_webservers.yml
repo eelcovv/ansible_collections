@@ -4,4 +4,4 @@
     - eelcovv.ldx_webdev_server
   tasks:
     - import_role:
-        name: ubuntu-webserver
+        name: ubuntu_webserver

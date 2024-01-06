@@ -6,6 +6,9 @@ user_full_name: Eelco van Vliet
 user_password: $6$AvVnPRYmnhZcgCUb$/t0Hgeg3d3MpUIc4g6r4iAXyWE/bCRwJ8dtZa/wVPtnisGdNjEboIQbb0mwNj4wKzdcdidTmx8QOr.QilxRCN1
 home: "/home/{{ user }}" 
 common_packages:
+  - python3
+  - python-is-python3
+  - pip
   - unzip
   - p7zip
   - p7zip-rar
@@ -25,5 +28,3 @@ common_packages:
   - imagemagick
   - xsel
   - xclip
-  - nala
-

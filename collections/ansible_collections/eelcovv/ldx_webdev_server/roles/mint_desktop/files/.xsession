@@ -1,0 +1,1 @@
+env -u SESSION_MANAGER -u DBUS_SESSION_BUS_ADDRESS cinnamon-session

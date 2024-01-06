@@ -29,7 +29,10 @@ all:
           ansible_lxd_remote: local
       webservers:
         hosts:
-          contaboweb:
-      desktops:
+          ubuntuweb:
+      ubuntu-desktops:
         hosts:
-          contabodsk:
+          ubuntudsk:
+      mint-desktops:
+        hosts:
+          mintdsk:

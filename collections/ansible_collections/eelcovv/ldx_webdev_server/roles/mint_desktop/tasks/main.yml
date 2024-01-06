@@ -1,0 +1,41 @@
+---
+# tasks file for ubuntu-desktop
+#- name: Copy Thorium deb fil 
+#  become: True
+#  become_user: root
+#  copy:
+#    src: "{{ role_path }}/files/thorium.list"
+#    dest: "/etc/apt/sources.list.d/"
+- name: Copy Xsession file
+  copy:
+    src: "{{ role_path }}/files/.xsession"
+    dest: "{{ home }}/.xession"
+    mode: "0664"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+- name: Install software for desktop
+  become: True
+  become_user: root
+  apt:
+    update-cache: yes
+    name: "{{ desktop_packages }}"
+- name: Adding xrdp user to group ssl-cert
+  user:
+    name: 'xrdp' 
+    groups: ssl-cert
+    append: yes
+- name: Install pycharm with snap
+  ansible.builtin.import_role:
+    name: oefenweb.pycharm
+- name: Create Desktop directory
+  ansible.builtin.file:
+    path: "{{ home }}/Desktop"
+    state: directory
+    mode: '0755'
+- name: Copy Pycharm Desktop icon
+  copy:
+    src: "{{ role_path }}/files/PyCharm.desktop"
+    dest: "{{ home }}/Desktop/PyCharm.desktop"
+    mode: "0775"
+    owner: "{{ user }}"
+    group: "{{ user }}"

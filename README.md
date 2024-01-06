@@ -255,13 +255,13 @@ lxc delete mintdesk
 Een lijst van al je forward porten krijgen
 
 ```
-lxc network forward show lxdbr0 10.0.0.143
+lxc network forward show lxdbr0 194.146.13.222
 ```
 
 Om 1 port de deleten doe je
 
 ```
-sudo lxc network forward port remove lxdbr0 10.0.0.143 tcp 2080
+sudo lxc network forward port remove lxdbr0 194.146.13.222 tcp 2080
 ```
 
 ##### RDP verbinding met Remmina maken
