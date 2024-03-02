@@ -1,5 +1,5 @@
 ---
-# vars file for ubuntu-desktop
+# vars file for mint_desktop
 pycharm_version: 2023.3.1
 pycharm_edition: professional
 desktop_packages: 
@@ -7,30 +7,3 @@ desktop_packages:
   - firefox
   - xrdp
   - freerdp2-x11
-  - gimp
-  - inkscape
-  - stacer
-  - snapd
-  - openjdk-17-jdk
-  - mesa-utils
-  - glmark2
-  - pulsemixer
-  - pulseaudio-utils
-#  - texlive
-#  - texlive
-#  - texlive-extra-utils
-#  - texlive-lang-european
-#  - texlive-xetex
-#  - texlive-science
-#  - texlive-luatex
-#  - texlive-publishers
-#  - texlive-pstricks
-#  - texlive-metapost
-#  - texlive-fonts-recommended
-#  - texlive-fonts-extra
-#  - texlive-formats-extra
-#  - latexmk
-#  - evince
-#  - alsa-utils
-#  - sqlitebrowser
-# - thorium-browser

@@ -21,18 +21,13 @@ all:
     nickname: "{{ vault_nickname }}"
     git_email: "{{ email }}"
     git_name: "{{ nickname }}"
-  roles:
-    - role: evandam.conda
   children:
-      local:
-        vars:
-          ansible_lxd_remote: local
-      webservers:
-        hosts:
-          ubuntuweb:
-      ubuntu-desktops:
-        hosts:
-          ubuntudsk:
-      mint-desktops:
-        hosts:
-          mintdsk:
+    local:
+      vars:
+        ansible_lxd_remote: local
+    webservers:
+      hosts:
+        ubuntuweb:
+    desktops:
+      hosts:
+        ubuntudsk:

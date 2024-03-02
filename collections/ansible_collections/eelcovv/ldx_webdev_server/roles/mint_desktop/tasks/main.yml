@@ -6,14 +6,14 @@
 #  copy:
 #    src: "{{ role_path }}/files/thorium.list"
 #    dest: "/etc/apt/sources.list.d/"
-- name: Copy Xsession file
+- name: Copy Xsession file to set Mint Desktop
   copy:
     src: "{{ role_path }}/files/.xsession"
     dest: "{{ home }}/.xession"
     mode: "0664"
     owner: "{{ user }}"
     group: "{{ user }}"
-- name: Install software for desktop
+- name: Install software for Mint desktop
   become: True
   become_user: root
   apt:

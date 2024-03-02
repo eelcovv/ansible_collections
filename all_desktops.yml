@@ -1,14 +1,9 @@
-- hosts: ubuntu_desktops
-  gather_facts: true
-  collections:
-    - eelcovv.ldx_webdev_server
-  tasks:
-    - import_role:
-        name: ubuntu_desktop
-- hosts: mint_desktops
+- hosts: desktops
   gather_facts: true
   collections:
     - eelcovv.ldx_webdev_server
   tasks:
     - import_role:
         name: mint_desktop
+    - import_role:
+        name: ubuntu_desktop

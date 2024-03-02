@@ -6,7 +6,7 @@
 #  copy:
 #    src: "{{ role_path }}/files/thorium.list"
 #    dest: "/etc/apt/sources.list.d/"
-- name: Install software for desktop
+- name: Install software for Ubuntu desktop
   become: True
   become_user: root
   apt:
