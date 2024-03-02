@@ -3,7 +3,7 @@
   collections:
     - eelcovv.ldx_webdev_server
   tasks:
-    - import_role:
-        name: mint_desktop
+    #    - import_role:
+    #    name: mint_desktop
     - import_role:
         name: ubuntu_desktop
